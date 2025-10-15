@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav, Button, NavDropdown } from "react-bootstrap";
 import { Link, NavLink } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
 
@@ -7,13 +7,23 @@ export default function AppNavbar(){
     const { user, logout } = useAuth()
 
     return (
-        <Navbar bg="dark" variant="dark" expand="md" className="mb-4">
+        <Navbar className="navbar-mishirt" expand="md" data-bs-theme="dark">
             <Container>
                 <Navbar.Brand as={Link} to="/">MISHIRT</Navbar.Brand>
                 <Navbar.Toggle aria-controls="main-nav"/>
                 <Navbar.Collapse id="main-nav">
                     <Nav className="me-auto">
+
                         <Nav.Link as={NavLink} to="/productos">Productos</Nav.Link>
+                        <Nav.Link as={NavLink} to="/torneo">Torneo Nacional</Nav.Link>
+
+                        <NavDropdown title="Categorías" id="categorias-dropdown">
+                            <NavDropdown.Item as={NavLink} to="/categoria/poleras">America</NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to="/categoria/pantalones">Europa</NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to="/categoria/accesorios">Asia</NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to="/categoria/ofertas">Africa</NavDropdown.Item>
+                        </NavDropdown>
+                        
                         <Nav.Link as={NavLink} to="/carrito">Carrito</Nav.Link>
                     </Nav>
                     <Nav>

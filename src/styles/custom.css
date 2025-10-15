@@ -24,3 +24,66 @@ font-weight: 700;
 margin-bottom: 1rem;
 }
 .muted{ color: #6c757d; }
+
+
+/* ---- Navbar personalizado ---- */
+.navbar-mishirt {
+  /* Colores base del navbar */
+  --bs-navbar-bg: #053499;            /* fondo */
+  --bs-navbar-color: #e5e7eb;         /* links */
+  --bs-navbar-hover-color: #ffffff;   /* hover links */
+  --bs-navbar-active-color: #ffffff;  /* link activo */
+  --bs-navbar-brand-color: #ffffff;   /* marca */
+  --bs-navbar-toggler-border-color: transparent;
+
+  background-color: var(--bs-navbar-bg) !important;
+}
+
+/* Dropdown a juego (opcional) */
+.navbar-mishirt .dropdown-menu {
+  --bs-dropdown-bg: #053499;
+  --bs-dropdown-link-color: #e5e7eb;
+  --bs-dropdown-link-hover-bg: #03449e;
+  --bs-dropdown-link-hover-color: #ffffff;
+}
+
+/* Que el link activo se vea más “marcado” (opcional) */
+.navbar-mishirt .nav-link.active {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+
+/* --- Separación global bajo el navbar --- */
+/* Aplica margen solo al primer contenedor bajo el navbar
+   para evitar dobles márgenes en otras secciones */
+.navbar + .container,
+.navbar + .container-fluid,
+.navbar + main {
+  margin-top: 1.5rem; /* ajusta a 1rem / 2rem si quieres */
+}
+
+
+
+/* --------- HeroCarousel styles ---------- */
+
+/* Centrar y dar estilo “pill” al título */
+.hero-caption {
+  bottom: 2.75rem; /* sube/baja el bloque respecto al borde inferior */
+}
+.hero-title {
+  display: inline-block;
+  padding: .5rem 1rem;
+  border-radius: 9999px;
+  background: rgba(20, 40, 160, .9); /* azul tipo marca */
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* Flechas más visibles en fondos claros (opcional) */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,.4));
+}
