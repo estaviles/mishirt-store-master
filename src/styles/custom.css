@@ -87,3 +87,60 @@ margin-bottom: 1rem;
 .carousel-control-next-icon {
   filter: drop-shadow(0 2px 3px rgba(0,0,0,.4));
 }
+
+/* ===== ProductCard ===== */
+.product-card { border-radius: 16px; }
+.product-card .pc-img { height: 220px; object-fit: cover; }
+
+.product-card .pc-badge{
+  position:absolute; top:.5rem; left:.5rem;
+  padding:.25rem .5rem; border-radius:9999px;
+  background: var(--brand-primary); color:#fff; font-weight:700; font-size:.75rem;
+}
+
+.product-card .pc-footer{
+  margin-top: auto;
+  display:flex; justify-content:space-between; align-items:center;
+}
+
+.product-card .pc-price{
+  font-weight: 800;
+  font-size: .95rem;
+}
+
+/* ===== ProductCard ===== */
+.product-card { border-radius: 16px; }
+.product-card .pc-img { height: 220px; object-fit: cover; }
+
+.product-card .pc-badge{
+  position:absolute; top:.5rem; left:.5rem;
+  padding:.25rem .5rem; border-radius:9999px;
+  background: #0d6efd; /* bootstrap primary */
+  color:#fff; font-weight:700; font-size:.75rem;
+}
+
+.product-card .pc-footer{
+  margin-top: auto;
+  display:flex; justify-content:space-between; align-items:center;
+}
+
+.product-card .pc-price{
+  font-weight: 800;
+  font-size: .95rem;
+}
+
+.pc-badge { display: none !important; }
+
+/* Overrides del template Vite (mantener) */
+body { display:block; place-items:initial; min-height:100vh; }
+#root { max-width:none; padding:0; text-align:initial; }
+.card { padding:0; }
+
+
+/* ===== Footer ===== */
+.site-footer__top{ background:#1d249f; color:#fff; padding:2rem 0; }
+.site-footer__top h5, .site-footer__top h6{ color:#fff; font-weight:700; letter-spacing:.3px; }
+.site-footer__top p{ color:#e5e7eb; }
+.sf-link{ color:#e5e7eb; text-decoration:none; }
+.sf-link:hover{ color:#fff; text-decoration:underline; }
+.site-footer__bottom{ background:#0b0c0f; color:#e5e7eb; padding:.75rem 0; }
