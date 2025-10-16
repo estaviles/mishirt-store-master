@@ -16,14 +16,6 @@ export default function AppNavbar(){
 
                         <Nav.Link as={NavLink} to="/productos">Productos</Nav.Link>
                         <Nav.Link as={NavLink} to="/torneo">Torneo Nacional</Nav.Link>
-
-                        <NavDropdown title="Categorías" id="categorias-dropdown">
-                            <NavDropdown.Item as={NavLink} to="/categoria/poleras">America</NavDropdown.Item>
-                            <NavDropdown.Item as={NavLink} to="/categoria/pantalones">Europa</NavDropdown.Item>
-                            <NavDropdown.Item as={NavLink} to="/categoria/accesorios">Asia</NavDropdown.Item>
-                            <NavDropdown.Item as={NavLink} to="/categoria/ofertas">Africa</NavDropdown.Item>
-                        </NavDropdown>
-                        
                         <Nav.Link as={NavLink} to="/carrito">Carrito</Nav.Link>
                     </Nav>
                     <Nav>
