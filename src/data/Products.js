@@ -12,7 +12,7 @@ export const products = [
     nombre: "Camiseta Chile 2024 Local",
     precio: 35000,
     descripcion: "Tela ligera 100%, escudo bordado.",
-    categoria: "Chile",
+    categoria: "America",
     img: imgCHI,
     destacado: true,
   },
@@ -21,7 +21,7 @@ export const products = [
     nombre: "Camiseta Argentina 2024 Local",
     precio: 42990,
     descripcion: "Versión hincha, 3 estrellas, tejido respirable.",
-    categoria: "Argentina",
+    categoria: "America",
     img: imgARG,
     destacado: true,
   },
@@ -30,7 +30,7 @@ export const products = [
     nombre: "Camiseta Colombia 2024 Local",
     precio: 39990,
     descripcion: "Ajuste clásico, secado rápido.",
-    categoria: "Colombia",
+    categoria: "America",
     img: imgCOL,
     destacado: true,
   },
@@ -40,7 +40,7 @@ export const products = [
     nombre: "Camiseta Edición 4",
     precio: 32990,
     descripcion: "Tejido respirable, corte regular.",
-    categoria: "Otros",
+    categoria: "Africa",
     img: img4,
     destacado: false,
   },
@@ -49,7 +49,7 @@ export const products = [
     nombre: "Camiseta Edición 5",
     precio: 37990,
     descripcion: "Versión hincha, secado rápido.",
-    categoria: "Otros",
+    categoria: "Europa",
     img: img5,
     destacado: false,
   },
@@ -58,12 +58,12 @@ export const products = [
     nombre: "Camiseta Edición 6",
     precio: 40990,
     descripcion: "Tela ligera, detalles en contraste.",
-    categoria: "Otros",
+    categoria: "Europa",
     img: img6,
     destacado: false,
   },
 
 ];
 
-export const categories = ["Todas", "Argentina", "Chile", "Colombia", "Otros"];
+export const categories = ["Todas", "America", "Europa", "Asia", "Africa"];
 

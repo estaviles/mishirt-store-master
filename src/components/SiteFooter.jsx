@@ -1,5 +1,6 @@
 // src/components/SiteFooter.jsx
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function SiteFooter() {
   const year = new Date().getFullYear();
@@ -20,9 +21,9 @@ export default function SiteFooter() {
             <div className="col-md-3">
               <h6 className="mb-2">LINKS</h6>
               <ul className="list-unstyled m-0">
-                <li><a href="#" className="sf-link">Contacto</a></li>
-                <li><a href="#" className="sf-link">Quienes Somos</a></li>
-                <li><a href="#" className="sf-link">Blog</a></li>
+                <li><Link to="/contacto" className="sf-link">Contacto</Link></li>
+                <li><Link to="/quienes-somos" className="sf-link">Quienes Somos</Link></li>
+                <li><Link to="/blog" className="sf-link">Blog</Link></li>
               </ul>
             </div>
 

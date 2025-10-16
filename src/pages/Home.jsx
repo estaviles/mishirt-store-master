@@ -1,11 +1,11 @@
+// src/pages/Home.jsx
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import HeroCarousel from "../components/HeroCarousel";
 import CardsGrid from "../components/CardsGrid";
-import { products } from "../data/Products"; // <-- fuente única
+import { products } from "../data/Products";
 
-// Imágenes del carrusel (se mantienen)
-import imgChile from "../assets/seleccion_chilena.jpg";
+import imgChile from "../assets/camiseta_chile_carousel.jpeg";
 import imgEsp from "../assets/seleccion_espanola.jpg";
 import imgArg from "../assets/seleccion_argentina.jpg";
 
@@ -16,18 +16,23 @@ export default function Home({ onAdd }) {
     { src: imgArg,   title: "SELECCIÓN ARGENTINA" },
   ];
 
-  // toma 3 productos marcados como 'destacado' en Products.js
   const camisetasDestacadas = products.filter(p => p.destacado).slice(0, 3);
 
-  return (
-    <Container className="mb-4">
-      <Row className="mb-4">
-        <Col>
-          <HeroCarousel slides={slides} />
-        </Col>
-      </Row>
 
-      <CardsGrid items={camisetasDestacadas} showCTA onAdd={onAdd} />
-    </Container>
+  return (
+    <>
+      <div className="container-fluid px-0 hero-wrapper">
+        <HeroCarousel slides={slides} full height="72vh" />
+      </div>
+
+      <Container as="section" aria-labelledby="destacadas" className="mb-4 after-hero">
+        <h2 id="destacadas" className="page-title text-center mb-3">
+          Camisetas destacadas
+        </h2>
+
+        <CardsGrid items={camisetasDestacadas} showCTA onAdd={onAdd} />
+      </Container>
+    </>
   );
+
 }

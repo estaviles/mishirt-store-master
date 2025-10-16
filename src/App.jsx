@@ -12,6 +12,8 @@ import Carrito from "./pages/Carrito";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SiteFooter from "./components/SiteFooter";
+import QuienesSomos from "./pages/QuienesSomos";
+import ProductDetail from "./pages/ProductDetail";
 
 export default function App() {
   // --- Estado del carrito ---
@@ -66,6 +68,8 @@ export default function App() {
               />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/quienes-somos" element={<QuienesSomos />} />
+              <Route path="/producto/:id" element={<ProductDetail onAdd={addToCart} />} />
             </Routes>
           </main>
 
