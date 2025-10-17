@@ -70,7 +70,7 @@ export const products = [
     nombre: "Camiseta Mexico 2024 Local",
     precio: 40990,
     descripcion: "Tela ligera, detalles en contraste.",
-    categoria: "Asia",
+    categoria: "America",
     img: imgMEX,
     destacado: false,
   },
