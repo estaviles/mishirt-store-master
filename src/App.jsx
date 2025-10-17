@@ -15,6 +15,10 @@ import SiteFooter from "./components/SiteFooter";
 import QuienesSomos from "./pages/QuienesSomos";
 import ProductDetail from "./pages/ProductDetail";
 
+// ⬇️ NUEVO: Blog
+import BlogList from "./pages/BlogList";
+import BlogDetail from "./pages/BlogDetail";
+
 export default function App() {
   // --- Estado del carrito ---
   const [carrito, setCarrito] = useState([]);
@@ -54,6 +58,11 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home onAdd={addToCart} />} />
               <Route path="/productos" element={<Productos onAdd={addToCart} />} />
+
+              {/* ⬇️ NUEVO: Rutas del Blog */}
+              <Route path="/blog" element={<BlogList />} />
+              <Route path="/blog/:slug" element={<BlogDetail />} />
+
               <Route
                 path="/carrito"
                 element={

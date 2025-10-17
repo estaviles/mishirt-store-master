@@ -29,7 +29,7 @@ margin-bottom: 1rem;
 /* ---- Navbar personalizado ---- */
 .navbar-mishirt {
   /* Colores base del navbar */
-  --bs-navbar-bg: #053499;            /* fondo */
+  --bs-navbar-bg: #1d249f;            /* fondo */
   --bs-navbar-color: #e5e7eb;         /* links */
   --bs-navbar-hover-color: #ffffff;   /* hover links */
   --bs-navbar-active-color: #ffffff;  /* link activo */
@@ -39,13 +39,6 @@ margin-bottom: 1rem;
   background-color: var(--bs-navbar-bg) !important;
 }
 
-/* Dropdown a juego (opcional) */
-.navbar-mishirt .dropdown-menu {
-  --bs-dropdown-bg: #053499;
-  --bs-dropdown-link-color: #e5e7eb;
-  --bs-dropdown-link-hover-bg: #03449e;
-  --bs-dropdown-link-hover-color: #ffffff;
-}
 
 /* Que el link activo se vea más “marcado” (opcional) */
 .navbar-mishirt .nav-link.active {
@@ -99,11 +92,11 @@ margin-bottom: 1rem;
   height: auto;
   aspect-ratio: 4 / 3;
   object-fit: contain;
-  background: #fff;      /* <- blanco para que se funda con la tarjeta */
-  border-top-left-radius: 16px;   /* opcional: mismo radio que la card */
-  border-top-right-radius: 16px;  /* para que no se vea ningún filo */
+  background: #fff;      
+  border-top-left-radius: 16px;   
+  border-top-right-radius: 16px;  
 }
-/* Badge (puedes cambiar el color si usas una CSS var de marca) */
+
 .product-card .pc-badge{
   position: absolute;
   top: .5rem; 
@@ -129,7 +122,7 @@ margin-bottom: 1rem;
   font-size: .95rem;
 }
 
-/* Ocultar badge globalmente (lo mantenías así) */
+/* Ocultar badge globalmente  */
 .pc-badge { 
   display: none !important; 
 }
@@ -189,7 +182,7 @@ body { display:block; place-items:initial; min-height:100vh; }
 .hero-frame{
   position: relative;
   overflow: hidden;
-  height: 72vh;        /* altura por defecto (puedes cambiar a 60–80vh) */
+  height: 72vh;        /* altura por defecto  */
   min-height: 420px;   /* asegura presencia en pantallas bajas */
   max-height: 86vh;    /* evita ocupar 100% del viewport */
 }
@@ -231,3 +224,25 @@ body { display:block; place-items:initial; min-height:100vh; }
 }
 
 
+/* ===== Blog ===== */
+.blog-page { background: #fff; }
+
+.blog-article { max-width: 860px; }
+
+.blog-cover {
+  display: block;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto 1rem;
+  border-radius: 10px;
+}
+
+/* Tarjetas de la lista */
+.blog-card-cover {
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.blog-card .card-title {
+  font-weight: 700;
+}

@@ -2,9 +2,11 @@ import imgARG from "../assets/argentina-local-2024.png";
 import imgCHI from "../assets/chile-local-2024.png";
 import imgCOL from "../assets/colombia-local-2024.png";
 
-import img4 from "../assets/camiseta4.png";
-import img5 from "../assets/camiseta5.png";
-import img6 from "../assets/camiseta6.png";
+import imgBELG from "../assets/belgica-local-2024-1.jpg";
+import imgITL from "../assets/italia-local-2024-1.jpg";
+import imgJAP from "../assets/japon-local-2024-1.jpg";
+
+import imgMEX from "../assets/mexico-local-2024-1.jpg";
 
 export const products = [
   {
@@ -36,30 +38,40 @@ export const products = [
   },
 
   {
-    id: "nv-004",
-    nombre: "Camiseta Edición 4",
+    id: "bg-2024-local",
+    nombre: "Camiseta Belgica 2024 Local",
     precio: 32990,
     descripcion: "Tejido respirable, corte regular.",
-    categoria: "Africa",
-    img: img4,
+    categoria: "Europa",
+    img: imgBELG,
     destacado: false,
   },
   {
-    id: "nv-005",
-    nombre: "Camiseta Edición 5",
+    id: "it-2024-local",
+    nombre: "Camiseta Italia 2024 Local",
     precio: 37990,
     descripcion: "Versión hincha, secado rápido.",
     categoria: "Europa",
-    img: img5,
+    img: imgITL,
     destacado: false,
   },
   {
-    id: "nv-006",
-    nombre: "Camiseta Edición 6",
+    id: "jp-2024-local",
+    nombre: "Camiseta Japon 2024 Local",
     precio: 40990,
     descripcion: "Tela ligera, detalles en contraste.",
-    categoria: "Europa",
-    img: img6,
+    categoria: "Asia",
+    img: imgJAP,
+    destacado: false,
+  },
+
+  {
+    id: "mx-2024-local",
+    nombre: "Camiseta Mexico 2024 Local",
+    precio: 40990,
+    descripcion: "Tela ligera, detalles en contraste.",
+    categoria: "Asia",
+    img: imgMEX,
     destacado: false,
   },
 

@@ -56,7 +56,7 @@ export default function ProductCard(props) {
           <Card.Title className="fs-6 mb-1">{nombre}</Card.Title>
         )}
 
-        {/* Solo mostrar si lo pides explícitamente */}
+        {/* Solo mostrar si se pide explícitamente */}
         {showDescription && !!descripcion && (
           <Card.Text className="text-muted mb-2">{descripcion}</Card.Text>
         )}
