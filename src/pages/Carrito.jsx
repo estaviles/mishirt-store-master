@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { Container, Table, Button, Alert, ButtonGroup } from "react-bootstrap";
+import { useNavigate } from "react-router-dom"; // ⬅️ NUEVO
 
 const fmtCLP = (v) =>
   new Intl.NumberFormat("es-CL", {
@@ -9,6 +10,8 @@ const fmtCLP = (v) =>
   }).format(Number(v || 0));
 
 export default function Carrito({ items, onInc, onDec, onRemoveGroup, onClear }) {
+  const navigate = useNavigate(); // ⬅️ NUEVO
+
   // Agrupamos por id + talla
   const rows = useMemo(() => {
     const map = new Map();
@@ -22,7 +25,6 @@ export default function Carrito({ items, onInc, onDec, onRemoveGroup, onClear })
           talla: tallaKey,
           precio: Number(p.precio) || 0,
           qty: 0,
-          // guardamos un “template” del producto para poder sumar con +
           template: p,
         });
       }
@@ -114,7 +116,9 @@ export default function Carrito({ items, onInc, onDec, onRemoveGroup, onClear })
           <Button variant="outline-secondary" onClick={onClear}>
             Vaciar
           </Button>
-          <Button>Finalizar compra</Button>
+          <Button onClick={() => navigate("/checkout")} aria-label="Ir a pagar">
+            Finalizar compra
+          </Button>
         </div>
       </div>
     </Container>

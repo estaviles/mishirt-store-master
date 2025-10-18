@@ -1,24 +1,23 @@
 // src/App.jsx
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"; // 👈 añadí Navigate
-
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./auth/AuthContext";
+
+//Components
 import AppNavbar from "./components/AppNavBar";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import SiteFooter from "./components/SiteFooter";
+//Pages
 import Home from "./pages/Home";
 import Productos from "./pages/Productos";
 import Carrito from "./pages/Carrito";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import SiteFooter from "./components/SiteFooter";
 import QuienesSomos from "./pages/QuienesSomos";
 import ProductDetail from "./pages/ProductDetail";
-
 import BlogList from "./pages/BlogList";
 import BlogDetail from "./pages/BlogDetail";
-
-// (si tienes Blog, déjalo igual)
+import Checkout from "./pages/Checkout"; 
 
 export default function App() {
   const [carrito, setCarrito] = useState([]);
@@ -72,11 +71,11 @@ export default function App() {
               <Route path="/productos" element={<Productos onAdd={addToCart} />} />
               <Route path="/producto/:id" element={<ProductDetail onAdd={addToCart} />} />
 
-              {/* === PASO 2: BLOG === */}
+              {/* Blog */}
               <Route path="/blog" element={<BlogList />} />
               <Route path="/blog/:slug" element={<BlogDetail />} />
 
-              {/* === PASO 3: CONTACTO (simple) === */}
+              {/* Contacto simple */}
               <Route
                 path="/contacto"
                 element={
@@ -87,7 +86,7 @@ export default function App() {
                 }
               />
 
-              {/* Carrito protegido */}
+              {/* Carrito (protegido) */}
               <Route
                 path="/carrito"
                 element={
@@ -103,11 +102,21 @@ export default function App() {
                 }
               />
 
+              {/* 💳 Checkout (protegido) */}
+              <Route
+                path="/checkout"
+                element={
+                  <ProtectedRoute>
+                    <Checkout items={carrito} onClear={clearCart} />
+                  </ProtectedRoute>
+                }
+              />
+
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/quienes-somos" element={<QuienesSomos />} />
 
-              {/* === PASO 4: comodín === */}
+              {/* comodín */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>

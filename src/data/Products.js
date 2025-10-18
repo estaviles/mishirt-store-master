@@ -1,11 +1,9 @@
 import imgARG from "../assets/argentina-local-2024.png";
 import imgCHI from "../assets/chile-local-2024.png";
 import imgCOL from "../assets/colombia-local-2024.png";
-
 import imgBELG from "../assets/belgica-local-2024-1.jpg";
 import imgITL from "../assets/italia-local-2024-1.jpg";
 import imgJAP from "../assets/japon-local-2024-1.jpg";
-
 import imgMEX from "../assets/mexico-local-2024-1.jpg";
 
 export const products = [
@@ -51,6 +49,7 @@ export const products = [
     equipo: "Belgica",
     categoria: "Europa",
     img: imgBELG,
+    tallas: ["S", "M", "L", "XL"],
     destacado: false,
   },
   {
@@ -60,6 +59,7 @@ export const products = [
     descripcion: "Versión hincha, secado rápido.",
     categoria: "Europa",
     img: imgITL,
+    tallas: ["S", "M", "L", "XL"],
     destacado: false,
   },
   {
@@ -69,6 +69,7 @@ export const products = [
     descripcion: "Tela ligera, detalles en contraste.",
     categoria: "Asia",
     img: imgJAP,
+    tallas: ["S", "M", "L", "XL"],
     destacado: false,
   },
 
@@ -79,6 +80,7 @@ export const products = [
     descripcion: "Tela ligera, detalles en contraste.",
     categoria: "America",
     img: imgMEX,
+    tallas: ["S", "M", "L", "XL"],
     destacado: false,
   },
 
