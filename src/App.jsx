@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"; // 👈 añadí Navigate
 
 import { AuthProvider } from "./auth/AuthContext";
 import AppNavbar from "./components/AppNavBar";
@@ -15,74 +15,102 @@ import SiteFooter from "./components/SiteFooter";
 import QuienesSomos from "./pages/QuienesSomos";
 import ProductDetail from "./pages/ProductDetail";
 
-// ⬇️ NUEVO: Blog
 import BlogList from "./pages/BlogList";
 import BlogDetail from "./pages/BlogDetail";
 
+// (si tienes Blog, déjalo igual)
+
 export default function App() {
-  // --- Estado del carrito ---
   const [carrito, setCarrito] = useState([]);
 
-  // Cargar carrito desde localStorage (una sola vez)
+  // Cargar carrito
   useEffect(() => {
     try {
       const raw = localStorage.getItem("tg_cart");
       if (raw) setCarrito(JSON.parse(raw));
-    } catch (_) {
-      // si falla el parse, lo ignoramos
-    }
+    } catch {}
   }, []);
 
-  // Persistir carrito en localStorage
+  // Guardar carrito
   useEffect(() => {
     try {
       localStorage.setItem("tg_cart", JSON.stringify(carrito));
-    } catch (_) {}
+    } catch {}
   }, [carrito]);
 
-  // Acciones del carrito
+  // === Acciones ===
   const addToCart = (item) => setCarrito((prev) => [...prev, item]);
-  const removeFromCart = (index) =>
-    setCarrito((prev) => prev.filter((_, i) => i !== index));
+
+  const decrementLine = ({ id, talla }) =>
+    setCarrito((prev) => {
+      const idx = prev.findIndex(
+        (p) => p.id === id && (p.talla ?? "-") === (talla ?? "-")
+      );
+      if (idx === -1) return prev;
+      const next = prev.slice();
+      next.splice(idx, 1);
+      return next;
+    });
+
+  const removeLine = ({ id, talla }) =>
+    setCarrito((prev) =>
+      prev.filter(
+        (p) => !(p.id === id && (p.talla ?? "-") === (talla ?? "-"))
+      )
+    );
+
   const clearCart = () => setCarrito([]);
 
   return (
     <AuthProvider>
       <Router>
-        {/* Shell para sticky footer */}
         <div className="d-flex flex-column min-vh-100">
           <AppNavbar />
-
-          {/* Contenido principal: crece para empujar el footer abajo */}
           <main className="flex-grow-1">
             <Routes>
               <Route path="/" element={<Home onAdd={addToCart} />} />
               <Route path="/productos" element={<Productos onAdd={addToCart} />} />
+              <Route path="/producto/:id" element={<ProductDetail onAdd={addToCart} />} />
 
-              {/* ⬇️ NUEVO: Rutas del Blog */}
+              {/* === PASO 2: BLOG === */}
               <Route path="/blog" element={<BlogList />} />
               <Route path="/blog/:slug" element={<BlogDetail />} />
 
+              {/* === PASO 3: CONTACTO (simple) === */}
+              <Route
+                path="/contacto"
+                element={
+                  <div className="container py-4">
+                    <h2>Contacto</h2>
+                    <p>Escríbenos a contacto@mishirt.cl</p>
+                  </div>
+                }
+              />
+
+              {/* Carrito protegido */}
               <Route
                 path="/carrito"
                 element={
                   <ProtectedRoute>
                     <Carrito
                       items={carrito}
-                      onRemove={removeFromCart}
+                      onInc={addToCart}           // +
+                      onDec={decrementLine}      // –
+                      onRemoveGroup={removeLine} // Eliminar línea
                       onClear={clearCart}
                     />
                   </ProtectedRoute>
                 }
               />
+
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/quienes-somos" element={<QuienesSomos />} />
-              <Route path="/producto/:id" element={<ProductDetail onAdd={addToCart} />} />
+
+              {/* === PASO 4: comodín === */}
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
-
-          {/* Footer al final */}
           <SiteFooter />
         </div>
       </Router>

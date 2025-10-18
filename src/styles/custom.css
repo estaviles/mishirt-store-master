@@ -246,3 +246,10 @@ body { display:block; place-items:initial; min-height:100vh; }
 .blog-card .card-title {
   font-weight: 700;
 }
+
+/* custom.css */
+.btn-group .btn[disabled] {
+  cursor: default;
+  background: #fff;
+  border-color: #dee2e6;
+}

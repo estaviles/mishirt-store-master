@@ -20,6 +20,7 @@ export default function AppNavbar(){
                     <Nav>
                         {user ? (
                             <>
+                            
                                 <Navbar.Text className="me-3">Hola, <strong>{user.nombre}</strong> </Navbar.Text>
                                 <Button size="sm" variant="outline-light" onClick={logout}>Cerrar sesion</Button>
                             </>
