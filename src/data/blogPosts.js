@@ -25,8 +25,8 @@ export const BLOG_POSTS = [
     excerpt:
       "Rayas, escudos dorados y telas ligeras: repasamos lo que está marcando la pauta en el diseño.",
     body: [
-      "Las camisetas con base blanca y rayas celestes siguen dominando las vitrinas. El éxito responde a una mezcla de identidad visual potente y materiales cada vez más livianos.",
-      "La inclusión de detalles metálicos y cortes ergonómicos elevan la apariencia sin sacrificar la comodidad, lo que las hace populares tanto en la cancha como en el streetwear.",
+      "La camiseta de la Selección Española combina tradición y rendimiento: rojo icónico con detalles amarillos, escudo bordado y un tejido ligero y transpirable que acompaña en la cancha o en la calle.",
+      "Un clásico de “La Roja” para llevar el orgullo de España en cada partido.",
     ],
   },
 ];

@@ -266,3 +266,23 @@ body { display:block; place-items:initial; min-height:100vh; }
   background: #fff;
   border-color: #dee2e6;
 }
+
+
+/* src/styles/custom.css */
+.navbar-mishirt .navbar-brand img {
+  height: 28px;   /* mismo valor que en el JSX */
+  width: auto;
+  display: block;
+}
+
+
+/* Opcional: ajustar ancho del buscador en el navbar */
+.navbar-mishirt [role="search"] input[type="search"] {
+  max-width: 220px;
+}
+
+@media print {
+  .navbar, .site-footer { display: none !important; }
+  .btn { display: none !important; }
+  .page-title { margin-top: 0; }
+}

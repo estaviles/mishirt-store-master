@@ -38,12 +38,47 @@ export default function Checkout({ items = [], onClear }) {
 
   const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
+  // 🔽 Cambiado: guardamos la orden y navegamos a /comprobante
   const onSubmit = (e) => {
     e.preventDefault();
     if (!lines.length) return;
-    alert(`¡Gracias ${form.nombre || ""}! Pedido recibido por ${fmtCLP(total)}.`);
-    onClear?.();               // vaciar carrito
-    navigate("/");             // vuelve al inicio (ajusta si prefieres otra ruta)
+
+    // ID simple de orden (ej: MS-20251019-123456)
+    const now = new Date();
+    const orderId = `MS-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(
+      now.getDate()
+    ).padStart(2, "0")}-${String(now.getTime()).slice(-6)}`;
+
+    const order = {
+      id: orderId,
+      date: now.toISOString(),
+      buyer: { email: form.email, nombre: form.nombre, phone: form.phone },
+      entrega: { tipo: form.entrega, direccion: form.entrega === "domicilio" ? form.direccion : null },
+      pago: form.pago,
+      items: lines.map((l) => ({
+        id: l.id,
+        nombre: l.nombre,
+        talla: l.talla,
+        qty: l.qty,
+        precio: Number(l.precio),
+      })),
+      subtotal,
+      envio,
+      total,
+    };
+
+    try {
+      // último comprobante
+      localStorage.setItem("tg_lastOrder", JSON.stringify(order));
+      // historial (opcional)
+      const histRaw = localStorage.getItem("tg_orders");
+      const hist = histRaw ? JSON.parse(histRaw) : [];
+      hist.unshift(order);
+      localStorage.setItem("tg_orders", JSON.stringify(hist));
+    } catch {}
+
+    onClear?.();            // vaciar carrito
+    navigate("/comprobante");
   };
 
   if (!lines.length) {

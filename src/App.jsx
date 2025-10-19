@@ -17,7 +17,8 @@ import QuienesSomos from "./pages/QuienesSomos";
 import ProductDetail from "./pages/ProductDetail";
 import BlogList from "./pages/BlogList";
 import BlogDetail from "./pages/BlogDetail";
-import Checkout from "./pages/Checkout"; 
+import Checkout from "./pages/Checkout";
+import Comprobante from "./pages/Comprobante"; // ⬅️ NUEVO
 
 export default function App() {
   const [carrito, setCarrito] = useState([]);
@@ -108,6 +109,16 @@ export default function App() {
                 element={
                   <ProtectedRoute>
                     <Checkout items={carrito} onClear={clearCart} />
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* ✅ Comprobante (protegido) */}
+              <Route
+                path="/comprobante"
+                element={
+                  <ProtectedRoute>
+                    <Comprobante />
                   </ProtectedRoute>
                 }
               />
