@@ -12,9 +12,7 @@ export default function SiteFooter() {
             <div className="col-md-6">
               <h5 className="mb-2">MISHIRT</h5>
               <p className="mb-0">
-                Porque no son simples camisetas, son los sueños y esperanzas de un país,
-                de una generación entera, de todo un pueblo, autenticidad garantizada para
-                poder revivir esos sueños.
+                Tienda dedicada a entregar camisetas de selecciones nacionales 
               </p>
             </div>
 
@@ -29,14 +27,16 @@ export default function SiteFooter() {
 
             <div className="col-md-3">
               <h6 className="mb-2">HORARIO DE ATENCIÓN</h6>
-              <div className="bg-white p-2">
-                <div className="d-flex justify-content-between">
-                  <span>Lunes a Viernes:</span><span>8am - 9pm</span>
-                </div>
-                <div className="d-flex justify-content-between">
-                  <span>Sábado y Domingo:</span><span>8am - 11pm</span>
-                </div>
-              </div>
+              <ul className="list-unstyled m-0">
+                <li className="d-flex justify-content-between">
+                  <span>Lunes a viernes</span>
+                  <time>08:00 – 18:00</time>
+                </li>
+                <li className="d-flex justify-content-between mt-1">
+                  <span>Sábado y domingo</span>
+                  <time>08:00 – 14:00</time>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

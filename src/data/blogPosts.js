@@ -1,5 +1,5 @@
 // src/data/blogPosts.js
-import coverChile from "../assets/camiseta_chile_carousel.jpeg";
+import coverChile from "../assets/camiseta-chile-blog.jpg";
 import coverEspana from "../assets/seleccion_espanola.jpg";
 
 export const BLOG_POSTS = [
@@ -7,7 +7,7 @@ export const BLOG_POSTS = [
     id: 1,
     slug: "nueva-camiseta-seleccion-chilena",
     title: "La nueva camiseta de la selección chilena",
-    date: "2025-09-07",
+    date: "2024-09-07",
     cover: coverChile,
     excerpt:
       "La Roja estrena una equipación con guiños históricos y materiales de última generación. Te contamos los detalles.",
@@ -20,7 +20,7 @@ export const BLOG_POSTS = [
     id: 2,
     slug: "nueva-camiseta-seleccion-españa",
     title: "La nueva camiseta de la seleccion española",
-    date: "2025-08-22",
+    date: "2024-08-22",
     cover: coverEspana,
     excerpt:
       "Rayas, escudos dorados y telas ligeras: repasamos lo que está marcando la pauta en el diseño.",

@@ -5,11 +5,11 @@ import HeroCarousel from "../components/HeroCarousel";
 import CardsGrid from "../components/CardsGrid";
 import { products } from "../data/Products";
 
-import imgChile from "../assets/camiseta_chile_carousel.jpeg";
+import imgChile from "../assets/camiseta-chile-carousel.jpg";
 import imgEsp from "../assets/seleccion_espanola.jpg";
 import imgArg from "../assets/seleccion_argentina.jpg";
 
-export default function Home({ onAdd }) {
+export default function Home() {
   const slides = [
     { src: imgChile, title: "SELECCIÓN CHILENA" },
     { src: imgEsp,   title: "SELECCIÓN ESPAÑOLA" },
@@ -29,8 +29,7 @@ export default function Home({ onAdd }) {
         <h2 id="destacadas" className="page-title text-center mb-3">
           Camisetas destacadas
         </h2>
-
-        <CardsGrid items={camisetasDestacadas} showCTA onAdd={onAdd} />
+        <CardsGrid items={camisetasDestacadas} />
       </Container>
     </>
   );

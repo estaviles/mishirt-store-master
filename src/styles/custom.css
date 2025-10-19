@@ -141,6 +141,19 @@ body { display:block; place-items:initial; min-height:100vh; }
 .sf-link:hover{ color:#fff; text-decoration:underline; }
 .site-footer__bottom{ background:#0b0c0f; color:#e5e7eb; padding:.75rem 0; }
 
+/* Horarios en el footer (estilo sutil, sin “cuadro blanco”) */
+.sf-hours{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 8px;
+  padding: .5rem .75rem;
+  color: #e5e7eb;
+  font-size: .95rem;
+}
+.sf-hours li + li{ margin-top: .25rem; }
+.sf-hours time{ font-weight: 700; color: #fff; }
+
+
 
 
 /* ===== About / Quienes Somos ===== */

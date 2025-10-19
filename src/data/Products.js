@@ -11,7 +11,7 @@ export const products = [
   id: "cl-2024",
   nombre: "Camiseta Chile 2024 Local",
   descripcion: "100% tela ligera",
-  precio: 35000,
+  precio: 29990,
   equipo: "Chile",
   categoria: "America",
   img: imgCHI,
@@ -21,7 +21,7 @@ export const products = [
   {
     id: "ar-2024",
     nombre: "Camiseta Argentina 2024 Local",
-    precio: 42990,
+    precio: 34990,
     descripcion: "Versión hincha, 3 estrellas, tejido respirable.",
     equipo: "Argentina",
     categoria: "America",
@@ -32,7 +32,7 @@ export const products = [
   {
     id: "co-2024",
     nombre: "Camiseta Colombia 2024 Local",
-    precio: 39990,
+    precio: 34990,
     descripcion: "Ajuste clásico, secado rápido.",
     equipo: "Colombia",
     categoria: "America",
@@ -44,7 +44,7 @@ export const products = [
   {
     id: "bg-2024",
     nombre: "Camiseta Belgica 2024 Local",
-    precio: 32990,
+    precio: 39990,
     descripcion: "Tejido respirable, corte regular.",
     equipo: "Belgica",
     categoria: "Europa",
@@ -55,7 +55,7 @@ export const products = [
   {
     id: "it-2024",
     nombre: "Camiseta Italia 2024 Local",
-    precio: 37990,
+    precio: 39990,
     descripcion: "Versión hincha, secado rápido.",
     categoria: "Europa",
     img: imgITL,
@@ -65,7 +65,7 @@ export const products = [
   {
     id: "jp-2024",
     nombre: "Camiseta Japon 2024 Local",
-    precio: 40990,
+    precio: 39990,
     descripcion: "Tela ligera, detalles en contraste.",
     categoria: "Asia",
     img: imgJAP,
@@ -76,7 +76,7 @@ export const products = [
   {
     id: "mx-2024",
     nombre: "Camiseta Mexico 2024 Local",
-    precio: 40990,
+    precio: 34990,
     descripcion: "Tela ligera, detalles en contraste.",
     categoria: "America",
     img: imgMEX,

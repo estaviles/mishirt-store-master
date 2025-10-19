@@ -46,9 +46,7 @@ export default function ProductCard({ product, item, onAdd, showCTA }) {
 
         <div className="pc-footer">
           {precio != null && <strong className="pc-price">{fmtCLP(precio)}</strong>}
-          {(showCTA || typeof onAdd === "function") && (
-            <Button size="sm" onClick={handleAdd}>Agregar</Button>
-          )}
+          {showCTA && (<Button size="sm" onClick={handleAdd}>Agregar</Button>)}
         </div>
       </Card.Body>
     </Card>

@@ -58,7 +58,7 @@ export default function Productos({ onAdd }) {
         <Row className="g-3">
         {filteredProducts.map((p) => (
             <Col key={p.id} xs={12} sm={6} md={4}>
-            <ProductCard product={p} onAdd={onAdd} showCTA />
+            <ProductCard product={p} />
             </Col>
         ))}
         </Row>
