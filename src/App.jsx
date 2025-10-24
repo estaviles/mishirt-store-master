@@ -18,7 +18,8 @@ import ProductDetail from "./pages/ProductDetail";
 import BlogList from "./pages/BlogList";
 import BlogDetail from "./pages/BlogDetail";
 import Checkout from "./pages/Checkout";
-import Comprobante from "./pages/Comprobante"; // ⬅️ NUEVO
+import Comprobante from "./pages/Comprobante"; 
+import Contacto from "./pages/Contacto";       
 
 export default function App() {
   const [carrito, setCarrito] = useState([]);
@@ -65,7 +66,8 @@ export default function App() {
     <AuthProvider>
       <Router>
         <div className="d-flex flex-column min-vh-100">
-          <AppNavbar />
+          {/* ✅ Paso 1: pasar el contador al navbar */}
+          <AppNavbar cartCount={carrito.length} />
           <main className="flex-grow-1">
             <Routes>
               <Route path="/" element={<Home onAdd={addToCart} />} />
@@ -76,16 +78,8 @@ export default function App() {
               <Route path="/blog" element={<BlogList />} />
               <Route path="/blog/:slug" element={<BlogDetail />} />
 
-              {/* Contacto simple */}
-              <Route
-                path="/contacto"
-                element={
-                  <div className="container py-4">
-                    <h2>Contacto</h2>
-                    <p>Escríbenos a contacto@mishirt.cl</p>
-                  </div>
-                }
-              />
+              {/* Contacto */}
+              <Route path="/contacto" element={<Contacto />} />
 
               {/* Carrito (protegido) */}
               <Route

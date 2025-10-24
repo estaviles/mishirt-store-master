@@ -1,31 +1,54 @@
+/* ==========================================================================
+   MiShirt — custom.css (ordenado por bloques)
+   Bloques:
+   1) Tokens / Variables
+   2) Base & utilidades
+   3) NAVBAR (core, estados, hermanos, logo y buscador)
+   4) HERO (carousel + marco full-bleed + responsive + separación)
+   5) Product Card
+   6) Product Detail
+   7) Blog
+   8) Footer
+   9) About / Quiénes Somos
+   10) Overrides del template (Vite)
+   11) Tweaks de componentes
+   12) Reglas de impresión
+   ========================================================================== */
+
+
+/* ========== 1) TOKENS / VARIABLES ========== */
 :root{
---brand-primary: #0d6efd; /* bootstrap primary */
---brand-dark: #1c2530;
+  --brand-primary: #0d6efd; /* bootstrap primary */
+  --brand-dark: #1c2530;
 }
+
+
+/* ========== 2) BASE & UTILIDADES ========== */
 body{
   background: #fff;   /* <— blanco para eliminar la franja gris */
   color: #223;
 }
 .navbar-brand{
-font-weight: 700;
-letter-spacing: .3px;
+  font-weight: 700;
+  letter-spacing: .3px;
 }
 .card{
-border-radius: 16px;
-box-shadow: 0 10px 20px rgba(0,0,0,.06);
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.06);
 }
 .btn{
-border-radius: 10px;
+  border-radius: 10px;
 }
 .form-label{ font-weight: 600; }
 .page-title{
-font-size: clamp(1.4rem, 2vw, 2rem);
-font-weight: 700;
-margin-bottom: 1rem;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 .muted{ color: #6c757d; }
 
 
+/* ========== 3) NAVBAR (core, estados, hermanos, logo y buscador) ========== */
 /* ---- Navbar personalizado ---- */
 .navbar-mishirt {
   /* Colores base del navbar */
@@ -39,31 +62,53 @@ margin-bottom: 1rem;
   background-color: var(--bs-navbar-bg) !important;
 }
 
-
-/* Que el link activo se vea más “marcado” (opcional) */
+/* Link activo más “marcado” (opcional) */
 .navbar-mishirt .nav-link.active {
   font-weight: 600;
   text-decoration: underline;
 }
 
-
-/* --- Separación global bajo el navbar --- */
-/* Aplica margen solo al primer contenedor bajo el navbar
-   para evitar dobles márgenes en otras secciones */
+/* Hermanos inmediatos del navbar: separación global */
 .navbar + .container,
 .navbar + .container-fluid,
 .navbar + main {
   margin-top: 1.5rem; /* ajusta a 1rem / 2rem si quieres */
 }
 
+/* Excepción: Quitar gap bajo el navbar SOLO para el hero */
+.navbar + .container-fluid.hero-wrapper {
+  margin-top: 0 !important;
+}
+
+/* Activo: logo dentro del navbar */
+.navbar-mishirt .navbar-brand img {
+  height: 28px;   /* mismo valor que en el JSX */
+  width: auto;
+  display: block;
+}
+
+/* Buscador del navbar (opcional) */
+.navbar-mishirt [role="search"] input[type="search"] {
+  max-width: 220px;
+  
+}
+
+.navbar-mishirt [data-bs-theme="light"] .form-control::placeholder {
+  color: #8a93a2;
+  opacity: 1;
+}
 
 
+
+/* ========== 4) HERO (carousel + marco full-bleed + responsive + separación) ========== */
 /* --------- HeroCarousel styles ---------- */
 
-/* Centrar y dar estilo “pill” al título */
+/* Posición base del caption (se afina más abajo) */
 .hero-caption {
   bottom: 2.75rem; /* sube/baja el bloque respecto al borde inferior */
 }
+
+/* Título estilo “pill” */
 .hero-title {
   display: inline-block;
   padding: .5rem 1rem;
@@ -81,6 +126,46 @@ margin-bottom: 1rem;
   filter: drop-shadow(0 2px 3px rgba(0,0,0,.4));
 }
 
+/* ====== Marco full-bleed / alto flexible ====== */
+.hero-frame{
+  position: relative;
+  overflow: hidden;
+  height: 72vh;        /* altura por defecto  */
+  min-height: 420px;   /* asegura presencia en pantallas bajas */
+  max-height: 86vh;    /* evita ocupar 100% del viewport */
+}
+
+/* La imagen llena el marco y se recorta sin deformarse */
+.hero-img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Si el hero NO es full, aplicamos bordes/sombra (cuando no pasas `full`) */
+.hero-frame:not(.hero-full){
+  border-radius: 0.75rem;          /* ~ rounded-3 */
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+}
+
+/* Ajuste fino de la posición del caption según altura del hero (override) */
+.hero-caption{
+  bottom: clamp(1rem, 6vh, 4rem);  /* más abajo en heroes altos */
+}
+
+/* Responsive: un poco más bajo en móviles */
+@media (max-width: 992px){
+  .hero-frame{ height: 50vh; min-height: 320px; }
+}
+
+/* Separación cómoda entre el hero y las cards */
+.after-hero {
+  margin-top: clamp(1rem, 3.5vw, 2.5rem);
+}
+
+
+/* ========== 5) PRODUCT CARD ========== */
 /* ===== ProductCard (limpio, sin duplicados) ===== */
 .product-card { 
   border-radius: 16px;
@@ -127,55 +212,8 @@ margin-bottom: 1rem;
   display: none !important; 
 }
 
-/* Overrides del template Vite (mantener) */
-body { display:block; place-items:initial; min-height:100vh; }
-#root { max-width:none; padding:0; text-align:initial; }
-.card { padding:0; }
 
-
-/* ===== Footer ===== */
-.site-footer__top{ background:#1d249f; color:#fff; padding:2rem 0; }
-.site-footer__top h5, .site-footer__top h6{ color:#fff; font-weight:700; letter-spacing:.3px; }
-.site-footer__top p{ color:#e5e7eb; }
-.sf-link{ color:#e5e7eb; text-decoration:none; }
-.sf-link:hover{ color:#fff; text-decoration:underline; }
-.site-footer__bottom{ background:#0b0c0f; color:#e5e7eb; padding:.75rem 0; }
-
-/* Horarios en el footer (estilo sutil, sin “cuadro blanco”) */
-.sf-hours{
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.15);
-  border-radius: 8px;
-  padding: .5rem .75rem;
-  color: #e5e7eb;
-  font-size: .95rem;
-}
-.sf-hours li + li{ margin-top: .25rem; }
-.sf-hours time{ font-weight: 700; color: #fff; }
-
-
-
-
-/* ===== About / Quienes Somos ===== */
-.about-page { background: #fff; }                    /* fondo limpio */
-.about-max { max-width: 880px; }                     /* ancho similar al mock */
-.about-body { max-width: 620px; }                    /* columna de texto */
-.about-divider {
-  border: 0;
-  border-top: 1px solid #e5e7eb;                     /* gris suave */
-  margin-top: 1.25rem;
-}
-
-/* Titular centrado como en el diseño */
-.about-page h2 { letter-spacing: .5px; }
-
-/* Opcional: ajustar en pantallas grandes */
-@media (min-width: 1200px) {
-  .about-max { max-width: 980px; }
-  .about-body { max-width: 680px; }
-}
-
-
+/* ========== 6) PRODUCT DETAIL ========== */
 /* ===== Product Detail ===== */
 .product-detail .pd-img{
   width: 100%;
@@ -189,54 +227,7 @@ body { display:block; place-items:initial; min-height:100vh; }
 .product-detail h2 { letter-spacing: .3px; }
 
 
-/* ====== HERO: alto flexible y full-bleed ====== */
-
-/* Marco que define la altura del slide (controlable desde el componente) */
-.hero-frame{
-  position: relative;
-  overflow: hidden;
-  height: 72vh;        /* altura por defecto  */
-  min-height: 420px;   /* asegura presencia en pantallas bajas */
-  max-height: 86vh;    /* evita ocupar 100% del viewport */
-}
-
-/* La imagen llena el marco y se recorta sin deformarse */
-.hero-img{
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-/* Si el hero NO es full, aplicamos bordes/sombra (cuando no pasas `full`) */
-.hero-frame:not(.hero-full){
-  border-radius: 0.75rem;          /* ~ rounded-3 */
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
-}
-
-/* Ajuste fino de la posición del título según altura del hero */
-.hero-caption{
-  bottom: clamp(1rem, 6vh, 4rem);  /* más abajo en heroes altos */
-}
-
-/* Responsive: un poco más bajo en móviles */
-@media (max-width: 992px){
-  .hero-frame{ height: 50vh; min-height: 320px; }
-}
-
-
-
-/* Quitar el gap bajo el navbar SOLO para el hero */
-.navbar + .container-fluid.hero-wrapper {
-  margin-top: 0 !important;
-}
-
-/* Dar espacio cómodo entre el hero y las cards */
-.after-hero {
-  margin-top: clamp(1rem, 3.5vw, 2.5rem);
-}
-
-
+/* ========== 7) BLOG ========== */
 /* ===== Blog ===== */
 .blog-page { background: #fff; }
 
@@ -260,6 +251,58 @@ body { display:block; place-items:initial; min-height:100vh; }
   font-weight: 700;
 }
 
+
+/* ========== 8) FOOTER ========== */
+/* ===== Footer ===== */
+.site-footer__top{ background:#1d249f; color:#fff; padding:2rem 0; }
+.site-footer__top h5, .site-footer__top h6{ color:#fff; font-weight:700; letter-spacing:.3px; }
+.site-footer__top p{ color:#e5e7eb; }
+.sf-link{ color:#e5e7eb; text-decoration:none; }
+.sf-link:hover{ color:#fff; text-decoration:underline; }
+.site-footer__bottom{ background:#0b0c0f; color:#e5e7eb; padding:.75rem 0; }
+
+/* Horarios en el footer (estilo sutil, sin “cuadro blanco”) */
+.sf-hours{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 8px;
+  padding: .5rem .75rem;
+  color: #e5e7eb;
+  font-size: .95rem;
+}
+.sf-hours li + li{ margin-top: .25rem; }
+.sf-hours time{ font-weight: 700; color: #fff; }
+
+
+/* ========== 9) ABOUT / QUIÉNES SOMOS ========== */
+/* ===== About / Quienes Somos ===== */
+.about-page { background: #fff; }                    /* fondo limpio */
+.about-max { max-width: 880px; }                     /* ancho similar al mock */
+.about-body { max-width: 620px; }                    /* columna de texto */
+.about-divider {
+  border: 0;
+  border-top: 1px solid #e5e7eb;                     /* gris suave */
+  margin-top: 1.25rem;
+}
+
+/* Titular centrado como en el diseño */
+.about-page h2 { letter-spacing: .5px; }
+
+/* Opcional: ajustar en pantallas grandes */
+@media (min-width: 1200px) {
+  .about-max { max-width: 980px; }
+  .about-body { max-width: 680px; }
+}
+
+
+/* ========== 10) OVERRIDES DEL TEMPLATE (Vite) ========== */
+/* Estos vienen del template y se mantienen tal cual */
+body { display:block; place-items:initial; min-height:100vh; }
+#root { max-width:none; padding:0; text-align:initial; }
+.card { padding:0; }
+
+
+/* ========== 11) TWEAKS DE COMPONENTES ========== */
 /* custom.css */
 .btn-group .btn[disabled] {
   cursor: default;
@@ -268,21 +311,46 @@ body { display:block; place-items:initial; min-height:100vh; }
 }
 
 
-/* src/styles/custom.css */
-.navbar-mishirt .navbar-brand img {
-  height: 28px;   /* mismo valor que en el JSX */
-  width: auto;
-  display: block;
-}
-
-
-/* Opcional: ajustar ancho del buscador en el navbar */
-.navbar-mishirt [role="search"] input[type="search"] {
-  max-width: 220px;
-}
-
+/* ========== 12) REGLAS DE IMPRESIÓN ========== */
 @media print {
   .navbar, .site-footer { display: none !important; }
   .btn { display: none !important; }
   .page-title { margin-top: 0; }
 }
+
+
+/* ===== Contacto ===== */
+.contact-page { background: #fff; }
+
+.contact-card{
+  background: #e9e9ea;                 /* gris suave del contenedor */
+  border-radius: 16px;                  /* esquinas redondeadas como el mock */
+  box-shadow: 0 10px 20px rgba(0,0,0,.06);
+}
+
+.contact-card h2{
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+
+/* Botón con color de marca del navbar */
+.btn-brand{
+  background: #1d249f;
+  border-color: #1d249f;
+  color: #fff;
+  border-radius: 10px;                  /* consistente con tu .btn global */
+}
+.btn-brand:hover{
+  background: #18208c;
+  border-color: #18208c;
+}
+
+
+/* Título de Contacto más simple (sin fuentes externas) */
+.contact-card h2{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;     /* prueba 500 si lo quieres aún más fino */
+  letter-spacing: 0;
+  color: #111827;       /* gris muy oscuro, evita el tono azul/grueso */
+}
+
