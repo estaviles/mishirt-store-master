@@ -5,7 +5,7 @@ import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 
 export default function AppNavbar({ cartCount = 0 }) {
-  const { user, logout } = useAuth();
+  const { user, logout, isAdmin } = useAuth();      // ⬅ añadimos isAdmin
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -16,6 +16,11 @@ export default function AppNavbar({ cartCount = 0 }) {
     e.preventDefault();
     const q = term.trim();
     navigate(q ? `/productos?q=${encodeURIComponent(q)}` : "/productos");
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");   // ⬅ volver a la home al cerrar sesión
   };
 
   return (
@@ -42,14 +47,21 @@ export default function AppNavbar({ cartCount = 0 }) {
                 </Badge>
               )}
             </Nav.Link>
+
+            {/* 🛠 Panel admin solo para usuarios ADMIN */}
+            {isAdmin && (
+              <Nav.Link as={NavLink} to="/admin">
+                Panel admin
+              </Nav.Link>
+            )}
           </Nav>
 
-          {/* 🔎 Buscador (tema claro solo aquí) */}
+          {/* 🔎 Buscador */}
           <Form
             className="d-flex me-3 my-2 my-md-0"
             role="search"
             onSubmit={handleSearch}
-            data-bs-theme="light"   // 👈 input blanco + placeholder gris
+            data-bs-theme="light"
           >
             <Form.Control
               type="search"
@@ -59,7 +71,9 @@ export default function AppNavbar({ cartCount = 0 }) {
               onChange={(e) => setTerm(e.target.value)}
               aria-label="Buscar camisetas"
             />
-            <Button size="sm" variant="outline-light" type="submit">Buscar</Button>
+            <Button size="sm" variant="outline-light" type="submit">
+              Buscar
+            </Button>
           </Form>
 
           {/* 👤 Sesión */}
@@ -67,15 +81,19 @@ export default function AppNavbar({ cartCount = 0 }) {
             {user ? (
               <>
                 <Navbar.Text className="me-3">
-                  Hola, <strong>{user.nombre}</strong>
+                  Hola, <strong>{user.nombre || user.username}</strong>
                 </Navbar.Text>
-                <Button size="sm" variant="outline-light" onClick={logout}>
-                  Cerrar sesion
+                <Button
+                  size="sm"
+                  variant="outline-light"
+                  onClick={handleLogout}
+                >
+                  Cerrar sesión
                 </Button>
               </>
             ) : (
               <>
-                <Nav.Link as={NavLink} to="/login">Iniciar sesion</Nav.Link>
+                <Nav.Link as={NavLink} to="/login">Iniciar sesión</Nav.Link>
                 <Nav.Link as={NavLink} to="/register">Registrarse</Nav.Link>
               </>
             )}

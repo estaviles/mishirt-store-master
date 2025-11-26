@@ -1,13 +1,19 @@
 // src/App.jsx
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { AuthProvider } from "./auth/AuthContext";
 
-//Components
+// Components
 import AppNavbar from "./components/AppNavBar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SiteFooter from "./components/SiteFooter";
-//Pages
+
+// Pages públicas / de la tienda
 import Home from "./pages/Home";
 import Productos from "./pages/Productos";
 import Carrito from "./pages/Carrito";
@@ -18,8 +24,14 @@ import ProductDetail from "./pages/ProductDetail";
 import BlogList from "./pages/BlogList";
 import BlogDetail from "./pages/BlogDetail";
 import Checkout from "./pages/Checkout";
-import Comprobante from "./pages/Comprobante"; 
-import Contacto from "./pages/Contacto";       
+import Comprobante from "./pages/Comprobante";
+import Contacto from "./pages/Contacto";
+
+// Páginas del panel administrador
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminProducts from "./pages/AdminProducts";
+import AdminReports from "./pages/AdminReports";
+import AdminUsers from "./pages/AdminUsers";
 
 export default function App() {
   const [carrito, setCarrito] = useState([]);
@@ -39,7 +51,7 @@ export default function App() {
     } catch {}
   }, [carrito]);
 
-  // === Acciones ===
+  // Acciones del carrito
   const addToCart = (item) => setCarrito((prev) => [...prev, item]);
 
   const decrementLine = ({ id, talla }) =>
@@ -66,13 +78,19 @@ export default function App() {
     <AuthProvider>
       <Router>
         <div className="d-flex flex-column min-vh-100">
-          {/* ✅ Paso 1: pasar el contador al navbar */}
           <AppNavbar cartCount={carrito.length} />
           <main className="flex-grow-1">
             <Routes>
+              {/* Tienda */}
               <Route path="/" element={<Home onAdd={addToCart} />} />
-              <Route path="/productos" element={<Productos onAdd={addToCart} />} />
-              <Route path="/producto/:id" element={<ProductDetail onAdd={addToCart} />} />
+              <Route
+                path="/productos"
+                element={<Productos onAdd={addToCart} />}
+              />
+              <Route
+                path="/producto/:id"
+                element={<ProductDetail onAdd={addToCart} />}
+              />
 
               {/* Blog */}
               <Route path="/blog" element={<BlogList />} />
@@ -88,8 +106,8 @@ export default function App() {
                   <ProtectedRoute>
                     <Carrito
                       items={carrito}
-                      onInc={addToCart}           // +
-                      onDec={decrementLine}      // –
+                      onInc={addToCart} // +
+                      onDec={decrementLine} // –
                       onRemoveGroup={removeLine} // Eliminar línea
                       onClear={clearCart}
                     />
@@ -97,7 +115,7 @@ export default function App() {
                 }
               />
 
-              {/* 💳 Checkout (protegido) */}
+              {/* Checkout (protegido) */}
               <Route
                 path="/checkout"
                 element={
@@ -107,7 +125,7 @@ export default function App() {
                 }
               />
 
-              {/* ✅ Comprobante (protegido) */}
+              {/* Comprobante (protegido) */}
               <Route
                 path="/comprobante"
                 element={
@@ -117,9 +135,44 @@ export default function App() {
                 }
               />
 
+              {/* Auth */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/quienes-somos" element={<QuienesSomos />} />
+
+              {/* Rutas del panel administrador (solo ADMIN) */}
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute requireAdmin>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/productos"
+                element={
+                  <ProtectedRoute requireAdmin>
+                    <AdminProducts />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/reportes"
+                element={
+                  <ProtectedRoute requireAdmin>
+                    <AdminReports />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/usuarios"
+                element={
+                  <ProtectedRoute requireAdmin>
+                    <AdminUsers />
+                  </ProtectedRoute>
+                }
+              />
 
               {/* comodín */}
               <Route path="*" element={<Navigate to="/" replace />} />

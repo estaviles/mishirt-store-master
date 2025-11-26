@@ -70,9 +70,13 @@ body{
 
 /* Hermanos inmediatos del navbar: separación global */
 .navbar + .container,
-.navbar + .container-fluid,
+.navbar + .container-fluid {
+  margin-top: 1.5rem; /* sigue habiendo espacio cuando uses container suelto */
+}
+
+/* El <main> general (donde va el panel admin) sin separación */
 .navbar + main {
-  margin-top: 1.5rem; /* ajusta a 1rem / 2rem si quieres */
+  margin-top: 0;
 }
 
 /* Excepción: Quitar gap bajo el navbar SOLO para el hero */
@@ -354,3 +358,102 @@ body { display:block; place-items:initial; min-height:100vh; }
   color: #111827;       /* gris muy oscuro, evita el tono azul/grueso */
 }
 
+/* ========== 13) PANEL ADMIN ========== */
+
+.admin-layout {
+  min-height: calc(100vh - 56px); /* 56px aprox. altura del navbar */
+}
+
+/* Sidebar */
+.admin-sidebar {
+  background-color: #111827; /* gris azulado oscuro */
+  color: #e5e7eb;
+  padding-top: 1rem;
+  min-height: calc(100vh - 56px);
+}
+
+.admin-sidebar-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.75rem 1.2rem 1.25rem;
+}
+
+/* Links del menú lateral */
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0.15rem 0.75rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;            /* estilo “píldora” */
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    transform 0.08s ease;
+}
+
+.admin-nav-link .admin-nav-icon {
+  font-size: 1rem;
+}
+
+.admin-nav-link:hover {
+  background-color: #1f2937;
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateX(1px);
+}
+
+.admin-nav-link.active {
+  background-color: #2563eb; /* azul similar al header */
+  color: #ffffff;
+}
+
+/* Separador y título de sección secundaria */
+.admin-sidebar-section {
+  border-top: 1px solid rgba(148, 163, 184, 0.35);
+  margin: 1rem 0.75rem 0;
+  padding-top: 0.6rem;
+}
+
+.admin-sidebar-section-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  opacity: 0.7;
+  padding: 0 0.25rem 0.2rem;
+}
+
+/* Tarjetas del dashboard */
+.admin-card {
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
+}
+
+.admin-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.admin-card-icon {
+  font-size: 2rem;
+  opacity: 0.75;
+}
+
+.admin-card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.admin-card-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.admin-card-footer {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
