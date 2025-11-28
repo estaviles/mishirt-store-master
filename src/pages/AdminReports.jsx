@@ -146,8 +146,7 @@ export default function AdminReports() {
     <AdminLayout>
       <h2 className="mb-2">Reportes de boletas</h2>
       <p className="text-muted mb-3">
-        Historial de órdenes generadas en la tienda. Más adelante esta vista se conectará al
-        microservicio <code>orders</code>.
+        Historial de órdenes generadas en la tienda. <code>orders</code>.
       </p>
 
       {/* Filtros */}
